@@ -8,6 +8,8 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import ProtectedPage from "./Pages/ProtectedPage";
+import PublicPage from "./Pages/PublicPage";
  
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -15,23 +17,7 @@ if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
  
 const clerkPublishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
  
-function PublicPage() {
-  return (
-    <>
-      <h1>Public page</h1>
-      <a href="/protected">Go to protected page</a>
-    </>
-  );
-}
- 
-function ProtectedPage() {
-  return (
-    <>
-      <h1>Protected page</h1>
-      <UserButton />
-    </>
-  );
-}
+
  
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
@@ -45,14 +31,14 @@ function ClerkProviderWithRoutes() {
         <Route path="/" element={<PublicPage />} />
         <Route
           path="/sign-in/*"
-          element={<SignIn routing="path" path="/sign-in" />}
+          element={<SignIn redirectUrl='/home' routing="path" path="/sign-in" />}
         />
         <Route
           path="/sign-up/*"
-          element={<SignUp routing="path" path="/sign-up" />}
+          element={<SignUp redirectUrl='/home' routing="path" path="/sign-up" />}
         />
         <Route
-          path="/protected"
+          path="/Home"
           element={
           <>
             <SignedIn>

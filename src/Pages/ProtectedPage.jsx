@@ -10,7 +10,7 @@ function ProtectedPage() {
     <div lang='en'>
         <div>
             <TopBar/>
-            <div>
+            <div className='flex flex-row'>
                 <LeftSideBar/>
                 <div className='main-container'>
                     <div className='w-full max-w-4xl'>

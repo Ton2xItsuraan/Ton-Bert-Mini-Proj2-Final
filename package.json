@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.27.2",
+    "@clerk/themes": "^1.7.9",
     "@fontsource/inter": "^5.0.15",
     "@uploadthing/react": "^5.7.0",
     "mongoose": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
+    "react-router-use-history": "^1.1.0",
     "svix-react": "^1.8.2",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^5.7.4"

@@ -1,4 +1,5 @@
 import { OrganizationSwitcher, SignOutButton, SignedIn} from '@clerk/clerk-react'
+import { dark } from '@clerk/themes';
 import React from 'react'
 
 function TopBar() {
@@ -24,6 +25,7 @@ function TopBar() {
           </div> 
           <OrganizationSwitcher 
         appearance={{
+          baseTheme: dark,
           elements: {
             organizationSwitcherTrigger:
             "py-2 px-4"

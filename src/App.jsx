@@ -10,6 +10,7 @@ import {
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import ProtectedPage from "./Pages/ProtectedPage";
 import PublicPage from "./Pages/PublicPage";
+import Onboarding from "./Pages/Onboarding";
  
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -35,8 +36,9 @@ function ClerkProviderWithRoutes() {
         />
         <Route
           path="/sign-up/*"
-          element={<SignUp redirectUrl='/home' routing="path" path="/sign-up" />}
+          element={<SignUp redirectUrl='/onboarding' routing="path" path="/sign-up" />}
         />
+        <Route path="/onboarding" element={<Onboarding />} />
         <Route
           path="/Home"
           element={

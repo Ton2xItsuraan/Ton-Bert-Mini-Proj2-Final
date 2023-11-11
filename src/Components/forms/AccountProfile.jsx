@@ -1,9 +1,10 @@
 import React from 'react'
+import { Form } from 'react-router-dom'
 
 
 function AccountProfile({ user, btnTitle }) {
   return (
-    <div>AccountProfile</div>
+    <Form>Account Profile</Form>
   )
 }
 

@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import AccountProfile from '../Components/forms/AccountProfile';
 
 function Onboarding() {
   const { user } = useUser();
+  const [userInfo, setUserInfo] = useState(null);
 
-  const userInfo = {}
+  useEffect(() => {
+    // Simulate an async data fetch (replace with actual data fetching)
+    const fetchData = async () => {
+      try {
+        const response = await fetch('your-api-endpoint-here');
+        if (response.ok) {
+          const data = await response.useUser();
+          setUserInfo(data);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // Call the async function when the component mounts
+  }, []);
 
   const userData = {
     id: user?.id,
     objectId: userInfo?._id,
     username: userInfo?.username || user?.username,
-    name: userInfo?.name || user?.firstname || "",
+    name: userInfo?.name || userInfo?.firstname || "",
     bio: userInfo?.bio || '',
     image: userInfo?.image || user?.imageUrl || '',
   };
@@ -24,8 +40,9 @@ function Onboarding() {
       </p>
       <section className='mt-9 bg-dark-2 p-10'>
         <AccountProfile 
-        user={userData}
-        btnTitle='Continue' />
+          user={userData}
+          btnTitle='Continue'
+        />
       </section>
     </main>
   );

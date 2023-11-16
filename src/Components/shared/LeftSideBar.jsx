@@ -1,5 +1,5 @@
 import React from 'react'
-import { sidebarLinks } from '../../../constants/index'
+import { sidebarLinks } from '../../../constants/index.js'
 import { Link, useLocation } from 'react-router-dom'
 import { SignOutButton, SignedIn } from '@clerk/clerk-react'
 import { useHistory } from 'react-router-use-history'

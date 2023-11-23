@@ -17,6 +17,10 @@ import Activity from "./Pages/Activity";
 import CreateThread from "./Pages/CreateThread";
 import Communities from "./Pages/Communities";
 import Profile from "./Pages/Profile";
+import { dark } from "@clerk/themes";
+import PostPage from "./Pages/PostPage";
+import UserProfile from "./Pages/UserProfile";
+
  
 if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -28,21 +32,28 @@ const clerkPublishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
  
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
+  
  
   return (
     <ClerkProvider
+    className="flex justify-center mt-20"
       publishableKey={clerkPublishableKey}
       navigate={(to) => navigate(to)}
+      appearance={{
+        baseTheme: dark,
+      }}
     >
+      
+    
       <Routes>
         <Route path="/" element={<PublicPage />} />
         <Route
           path="/sign-in/*"
-          element={<SignIn redirectUrl='/home' routing="path" path="/sign-in" />}
+          element={<SignIn redirectUrl='/protected' routing="path" path="/sign-in" />}
         />
         <Route
           path="/sign-up/*"
-          element={<SignUp redirectUrl='/onboarding' routing="path" path="/sign-up" />}
+          element={<SignUp redirectUrl='/protected' routing="path" path="/sign-up" />}
         />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/home" element={<Home />} />
@@ -51,12 +62,18 @@ function ClerkProviderWithRoutes() {
         <Route path="/create-thread" element={<CreateThread />} />
         <Route path="/communities" element={<Communities />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/markzuckerberg/post/1" element={<PostPage />} />
+      
+        <Route path="/profile/:name" element={<UserProfile />} />
+      
+ 
         <Route
-          path="/Home"
+          path="/protected"
           element={
           <>
             <SignedIn>
-              <ProtectedPage />
+              <Home />
+              <ProtectedPage/>
             </SignedIn>
              <SignedOut>
               <RedirectToSignIn />

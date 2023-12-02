@@ -17,7 +17,7 @@ function Search() {
 
     setActiveSearch(
       wordsWithAvatars
-        .filter((w) => w.word.toLowerCase().includes(searchTerm)) // Convert words to lowercase for case-insensitive comparison
+        .filter((w) => w.name.toLowerCase().includes(searchTerm)) // Convert words to lowercase for case-insensitive comparison
         .slice(0, 8)
     );
   };
@@ -41,17 +41,17 @@ function Search() {
           <div className="absolute top-20 p-4 bg-slate-800 text-white w-full rounded-xl left-1/2 -translate-x-1/2 flex flex-col gap-2">
             {activeSearch.map((result) => (
               <Link
-                key={result.word}
-                to={`/profile/${result.word.toLowerCase()}`} // Using lowercase to ensure consistency in the URL
+                key={result.name}
+                to={`/profile/${result.name.toLowerCase()}`} // Using lowercase to ensure consistency in the URL
                 className="flex items-center gap-2"
               >
-                <div key={result.word} className="flex items-center gap-2">
+                <div key={result.name} className="flex items-center gap-2">
                   <img
                     src={result.avatar}
-                    alt={`${result.word} avatar`}
+                    alt={`${result.name} avatar`}
                     className="w-8 h-8 rounded-full"
                   />
-                  <span>{result.word}</span>
+                  <span>{result.name}</span>
                 </div>
               </Link>
             ))}

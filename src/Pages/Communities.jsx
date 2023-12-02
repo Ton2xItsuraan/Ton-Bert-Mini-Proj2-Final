@@ -12,12 +12,12 @@ function Communities() {
 
         <Stack spacing={4}>
           <CommunityLink
-            name="Facebook"
+            name="CodeRunners"
             description="The goal of this page is to unite communities on certain topics."
             link="https://your-community-link-1"
           />
           <CommunityLink
-            name="Twitter"
+            name="WD88P Open Forum Group"
             description="Be Inform and updated."
             link="https://your-community-link-2"
           />
